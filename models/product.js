@@ -19,4 +19,4 @@ const productSchema = new mangoose.Schema({
 
 );
 
- module.exports = mangoose.model('Product', productSchema);
+ module.exports = mangoose.model('product', productSchema);

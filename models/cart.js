@@ -16,4 +16,4 @@ const cartSchema = new mangoose.Schema({
 
 );
 
- module.exports = mangoose.model('Cart', cartSchema);
+ module.exports = mangoose.model('cart', cartSchema);

@@ -3,7 +3,9 @@ const app = express();
 const mongoose = require('mongoose');
 require('dotenv').config();
 
+
 const userRoutes = require('./routes/user');
+const authRoutes = require('./routes/auth');
 
 // Build connection string from environment variables for safety.
 // Set MONGO_USER, MONGO_PASS, MONGO_HOST, MONGO_DB in your environment or .env file.
@@ -32,8 +34,8 @@ mongoose.connect(mongoUri)
 
 //api endpoints would go here
 app.use(express.json());
-app.use('/api/users', userRoutes);
- 
+app.use('/api/user', userRoutes);
+app.use('/api/auth', authRoutes);
 app.listen(3000, () => {
     console.log('Payment API is running on port 3000');
 });

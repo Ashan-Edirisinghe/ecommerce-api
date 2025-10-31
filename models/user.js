@@ -13,6 +13,6 @@ const userSchema = new mangoose.Schema({
 
 );
 
- module.exports = mangoose.model('User', userSchema);
+ module.exports = mangoose.model('user', userSchema);
 
  

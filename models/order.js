@@ -19,4 +19,4 @@ const orderSchema = new mangoose.Schema({
 
 );
 
- module.exports = mangoose.model('Order', orderSchema);
+ module.exports = mangoose.model('order', orderSchema);
