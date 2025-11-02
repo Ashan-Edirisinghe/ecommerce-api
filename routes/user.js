@@ -10,7 +10,10 @@ router.put("/:id", verifyAndauthorization, async (req, res) => {
     try{
         const updatedUser = await user.findByIdAndUpdate(req.params.id,{
             $set: req.body
-        },{new:true} )}
+        },{new:true} );
+        
+        res.status(200).json(updatedUser);
+    }
     catch(err){
         res.status(500).json(err);
     }
