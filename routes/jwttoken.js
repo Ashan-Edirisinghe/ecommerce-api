@@ -1,11 +1,11 @@
 const jwt = require('jsonwebtoken');
 
 const verifyToken = (req, res, next) => {
-    const authHeader = req.headers.token;
+    const authHeader = req.headers.authorization;
     
     if (authHeader) {
-        const token = authHeader.split(" ")[1];
-       jwt.verify(authHeader, process.env.JWT_SECRET, (err, user) => {
+        const token = authHeader.split(" ")[1]; // Get token after "Bearer "
+       jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
            if (err) res.status(403).json("Token is not valid!");
            req.user = user;
            next();
@@ -34,7 +34,7 @@ const verifyAndadmin = (req, res, next) => {
         if (req.user.isAdmin) {    
             next();
         } else {
-            res.status(403).json("You are not authorized!");
+            res.status(403).json("You are not authorized admin!");
         }
     });
 }

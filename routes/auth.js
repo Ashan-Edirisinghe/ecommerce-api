@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const User = require('../models/user');
 const CrptoJS = require('crypto-js');
-const jwt = require('jsonwebtoken');
 
  router.post('/register',  async (req, res) => {
      // Registration logic here
@@ -14,8 +13,6 @@ const jwt = require('jsonwebtoken');
 
     try{ 
      const savedUser = await newUser.save();
-
-
         res.status(201).json(savedUser);
     } catch(err) {
          
@@ -34,18 +31,7 @@ const jwt = require('jsonwebtoken');
             if(password !== req.body.password){ 
                 res.status(401).json({ message: 'Invalid credentials' });
             }else{
-
-               //jwt token
-                const accessToken = jwt.sign(
-                    {
-                        id: user._id,
-                        isAdmin: user.isAdmin
-                    },
-                    process.env.JWT_SECRET,
-                    { expiresIn: '1d' }
-                );
-                
-                res.status(200).json({ message: 'Login successful', accessToken });
+                res.status(200).json({ message: 'Login successful' });
             }
 
            
