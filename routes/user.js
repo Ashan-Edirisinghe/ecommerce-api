@@ -1,6 +1,8 @@
-const { verifyToken, verifyAndauthorization } = require('./jwttoken');
+const { verifyToken, verifyAndauthorization, verifyAndadmin } = require('./jwttoken');
 
 const router = require('express').Router();
+
+//update
 
 router.put("/:id", verifyAndauthorization, async (req, res) => {
     if (req.body.password) {
@@ -17,8 +19,10 @@ router.put("/:id", verifyAndauthorization, async (req, res) => {
     catch(err){
         res.status(500).json(err);
     }
-});
- 
+});    
+
+ //delete
+
 router.delete("/:id",verifyAndauthorization, async (req, res) => {
 try{
     await user.findByIdAndDelete(req.params.id);
@@ -28,3 +32,16 @@ try{
 }
 });
 module.exports = router;
+
+//get
+
+router.get("/:id", verifyAndadmin, async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id);
+
+        const { password, ...others } = user._doc;
+        res.status(200).json(others);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
