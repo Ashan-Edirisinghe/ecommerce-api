@@ -7,6 +7,7 @@ require('dotenv').config();
 const userRoutes = require('./routes/user');
 const authRoutes = require('./routes/auth');
 const productRoutes = require('./routes/product');
+const  carttRoutes = require('./routes/cart');
 
 // Build connection string from environment variables for safety.
 // Set MONGO_USER, MONGO_PASS, MONGO_HOST, MONGO_DB in your environment or .env file.
@@ -38,6 +39,7 @@ app.use(express.json());
 app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/product', productRoutes);
+app.use('/api/cart', carttRoutes);
 app.listen(3000, () => {
     console.log('Payment API is running on port 3000');
 });

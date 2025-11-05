@@ -1,17 +1,17 @@
 const router = require('express').Router();
 const { verifyToken, verifyAndauthorization, verifyAndadmin } = require('./jwttoken');
-const Product = require('../models/product');
+ 
 const CryptoJS = require('crypto-js');
 const product = require('../models/product');
 
 //create product
 
-router.post("/", verifyAndadmin, async (req, res) => {
-    const newproduct = new product(req.body);
+router.post("/", verifyToken, async (req, res) => {
+    const newcart = new cart(req.body);
     try{
-        const saveproduct = await newproduct.save();
+        const savecart = await newcart.save();
 
-        res.status(200).json(saveproduct);
+        res.status(200).json(savecart);
       }catch(err){
         res.status(500).json(err);
       }
