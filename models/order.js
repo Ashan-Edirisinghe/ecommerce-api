@@ -2,7 +2,7 @@ const mangoose = require('mongoose');
 const  {boolean} = require('webidl-conversions');
 
 const orderSchema = new mangoose.Schema({    
-    userId: { type: String, required: true },
+    userid: { type: String, required: true },
     products: [
         {
             productId: { type: String },
