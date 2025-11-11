@@ -37,5 +37,5 @@ jobs:
         echo "${{ secrets.PORT }}" >> .env
         echo "${{ secrets.CRYPTOJS_SECRET }}" >> .env
         echo "${{ secrets.JWT_SECRET }}" >> .env
-    - run: pm2 restart ecom_api
+    - run: pm2 restart api
         
